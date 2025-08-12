@@ -79,7 +79,7 @@ const VideoProduction = () => {
           <React.Fragment key={index}>
             <div className="w-full h-[1px] bg-gray-200 my-6"></div>
 
-            <div className="flex  flex-col-reverse lg:flex-row gap-6 w-full">
+            <div className="flex  flex-col-reverse justify-end  lg:flex-row gap-6 w-full">
               {/* Text */}
               <div className="md:w-1/3 w-full flex lg:justify-end">
                 <div className="flex gap-2 md:gap-20 lg:gap-2  md:flex-row flex-col lg:flex-col lg:text-right text-left">
@@ -87,10 +87,10 @@ const VideoProduction = () => {
                     Client
                   </p>
                   <div className="flex flex-col leading-[1]">
-                    <h1 className="text-[40px] lg:text-[64px] font-semibold uppercase">
+                    <h1 className="text-[40px]  md:text-[56px] lg:text-[44px] font-semibold uppercase">
                       {item.title}
                     </h1>
-                    <p className=" text-[40px] lg:text-[64px] font-bold text-gray-400">
+                    <p className=" text-[40px] lg:text-[44px]  font-bold text-gray-400">
                       UAE
                     </p>
                   </div>
@@ -99,7 +99,7 @@ const VideoProduction = () => {
 
               {/* Image */}
               <div
-                className="w-full lg:w-2/3 h-[191px] md:h-[383px] lg:h-[750px]"
+                className="w-full lg:w-2/3  overflow-hidden"
                 data-lenis-prevent
               >
                 <iframe
@@ -107,7 +107,7 @@ const VideoProduction = () => {
                     ?.split("/")
                     .pop()}`}
                   title={item.title || "Case Study"}
-                  className="w-full h-full object-cover"
+                  className=" object-cover w-full h-full    md:w-[740px] md:h-[400]   overflow-hidden"
                   frameBorder="0"
                   allow="autoplay; fullscreen"
                   allowFullScreen

@@ -97,7 +97,7 @@ const MotionGraphics = () => {
                   <p className="text-black/50 text-[16px] md:text-[18px] lg:text-[22px] uppercase sub-heading font-bold">
                     PROJECT
                   </p>
-                  <h1 className="text-[40px] lg:text-[64px] font-semibold leading-[.99] capitalize">
+                  <h1 className="text-[40px] lg:text-[44px] font-semibold leading-[.99] capitalize">
                     {item.title}
                   </h1>
                 </div>

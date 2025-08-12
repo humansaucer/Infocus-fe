@@ -100,7 +100,7 @@ const EventCoverage = () => {
                     CLIENT
                   </p>
                   <div className="flex flex-col">
-                    <h1 className="text-xl font-semibold text-[40px] md:text-[40px] lg:text-[64px] leading-[1]">
+                    <h1 className="text-xl font-semibold text-[40px] md:text-[40px] lg:text-[54px] leading-[1]">
                       {item.title}
                     </h1>
                   </div>
@@ -114,8 +114,9 @@ const EventCoverage = () => {
                     ?.split("/")
                     .pop()}`}
                   title={item.title || "Case Study"}
-                  className="w-full  h-[620px] md:h-[750px] object-cover"
+                  className="w-full  h-[620px] md:h-[750px] md:w-[450px]   object-cover "
                   frameBorder="0"
+                  width={"100%"}
                   allow="autoplay; fullscreen"
                   allowFullScreen
                 />
