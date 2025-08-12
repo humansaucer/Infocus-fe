@@ -207,7 +207,7 @@ const MembersSection = () => {
           <h2 className="relative font-bold text-[24px] md:text-[36px] lg:text-[42px] mt-6">
             Agency Team
             <div className="w-[1px] absolute top-[100%] left-0 right-0 h-8 bg-green-500  mx-auto mt-6"></div>
-            <div className="max-w-[2500px] absolute top-[150%] left-[-110%] right-[-110%] h-[1px] bg-green-500  mx-auto mt-6"></div>
+            <div className="max-w-[2500px] absolute md:top-[150%] top-[190%] left-[-20%] right-[-20%] md:left-[-110%] md:right-[-110%] h-[1px] bg-green-500  mx-auto mt-6"></div>
           </h2>
         </div>
       </div>
@@ -288,7 +288,7 @@ const MembersSection = () => {
                     className="bg-white border-b border-gray-200 min-h-[300px] relative"
                   >
                     <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
-                      <span className="font-bold text-2xl capitalize bg-white px-4 py-2 rounded-lg shadow-sm">
+                      <span className="font-bold text-2xl capitalize  px-4 py-2 rounded-lg shadow-sm">
                         {department}
                       </span>
                     </div>
