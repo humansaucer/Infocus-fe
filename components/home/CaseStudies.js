@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import axios from "axios"
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import axios from "axios";
 
 const CaseStudies = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null)
-  const [data, setData] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
     try {
@@ -31,7 +31,7 @@ const CaseStudies = () => {
     <section className="min-h-screen pb-0 w-full">
       <div className="px-4 lg:px-6 py-20">
         <div className="text-center mb-16">
-          <motion.h1 
+          <motion.h1
             className="text-[40px] md:text-[64px] font-bold font-bandeins-strange text-black text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -44,8 +44,8 @@ const CaseStudies = () => {
 
         <div className="flex flex-col lg:flex-row justify-center items-stretch gap-10">
           {(loading ? shimmerArray : data).map((item, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               className="flex flex-col w-full lg:w-[668px]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +66,11 @@ const CaseStudies = () => {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-[242px] md:h-[487px] lg:h-[480px] object-cover transition-all duration-300 group-hover:blur-sm"
+                      className={`w-full transition-all duration-300 group-hover:blur-sm ${
+                        index === 1
+                          ? "h-[252px] md:h-[520px] lg:h-[510px] object-cover relative top-[-10px]"
+                          : "h-[242px] md:h-[487px] lg:h-[480px] object-cover"
+                      }`}
                     />
                     <Link
                       href={`/case-studies/${item._id}`}
@@ -92,21 +96,24 @@ const CaseStudies = () => {
         </div>
 
         {!loading && (
-          <motion.div 
+          <motion.div
             className="text-center mt-10 font-bandeins-strange"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <Link href={"/case-studies"} className="bg-black text-white px-6 py-3 cursor-pointer hover:bg-gray-200 hover:text-black hover:scale-105 transition-transform duration-300 rounded-md font-medium text-[16px] md:text-[18px] lg:text-[22px]">
+            <Link
+              href={"/case-studies"}
+              className="bg-black text-white px-6 py-3 cursor-pointer hover:bg-gray-200 hover:text-black hover:scale-105 transition-transform duration-300 rounded-md font-medium text-[16px] md:text-[18px] lg:text-[22px]"
+            >
               See All
             </Link>
           </motion.div>
         )}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default CaseStudies
+export default CaseStudies;

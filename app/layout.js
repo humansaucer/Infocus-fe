@@ -3,7 +3,12 @@ import Navbar from "../components/Navbar";
 import ParallaxWrapper from "../components/ParallaxWrapper";
 import { AuthProvider } from "@/context/AuthContext";
 import { Almarai } from "next/font/google";
-const almarai = Almarai({ subsets: ["arabic"], weight: ["300", "400", "700", "800"] });
+import { NavbarProvider, useNavbar } from "@/context/NavBarContext";
+import NavbarWrapper from "@/components/navbarWrapper";
+const almarai = Almarai({
+  subsets: ["arabic"],
+  weight: ["300", "400", "700", "800"],
+});
 
 export const metadata = {
   title: "InFocusMedia",
@@ -16,9 +21,15 @@ export default function RootLayout({ children }) {
       <head>
         {/* Removed Google Fonts <link> in favor of next/font */}
         <title>Infocus Media - Creative Agency</title>
-        <meta name="description" content="Infocus Media: Born from Emirati soil, our roots run deep and our vision soars high. Explore our case studies, services, and creative work." />
+        <meta
+          name="description"
+          content="Infocus Media: Born from Emirati soil, our roots run deep and our vision soars high. Explore our case studies, services, and creative work."
+        />
         <meta property="og:title" content="Infocus Media - Creative Agency" />
-        <meta property="og:description" content="Explore our case studies, services, and creative work." />
+        <meta
+          property="og:description"
+          content="Explore our case studies, services, and creative work."
+        />
         <meta property="og:image" content="/logo.png" />
         <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,8 +39,10 @@ export default function RootLayout({ children }) {
         {/* <div className="fixed inset-0 z-0 bg-red" /> */}
 
         <AuthProvider>
-            <Navbar />
+          <NavbarProvider>
+            <NavbarWrapper />
             {children}
+          </NavbarProvider>
         </AuthProvider>
       </body>
     </html>

@@ -3,10 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useNavbar } from "@/context/NavBarContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
+  const { setIsNavbarVisible } = useNavbar();
+
   const sectionRef = useRef(null);
   const textRef = useRef(null);
   const videoRef = useRef(null);
@@ -37,41 +40,41 @@ export default function HeroSection() {
       const endX = -textWidth + viewportWidth * 0.9;
 
       // Get content elements
-      const logo = document.querySelector('.logo-fade');
-      const textElements = document.querySelectorAll('.text-fade');
+      const logo = document.querySelector(".logo-fade");
+      const textElements = document.querySelectorAll(".text-fade");
       const contentOverlay = contentOverlayRef.current;
 
       gsap.set(text, { attr: { x: startX } });
-      gsap.set(video, { 
+      gsap.set(video, {
         y: 0,
         height: "100vh",
         width: "100vw",
-        objectFit: "cover"
+        objectFit: "cover",
       });
-      
+
       // Position second video initially below viewport
-      gsap.set(secondVideo, { 
+      gsap.set(secondVideo, {
         y: "100vh",
         height: "100vh",
         width: "100vw",
-        objectFit: "cover"
+        objectFit: "cover",
       });
-      
+
       // Hide content initially and position it
       if (logo) gsap.set(logo, { opacity: 0, y: 50 });
       if (textElements.length) {
         gsap.set(textElements, { opacity: 0, y: 30 });
       }
       if (contentOverlay) {
-        gsap.set(contentOverlay, { 
+        gsap.set(contentOverlay, {
           y: 0,
-          display: 'flex',
-          position: 'absolute',
+          display: "flex",
+          position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          height: "100vh"
+          height: "100vh",
         });
       }
 
@@ -83,6 +86,10 @@ export default function HeroSection() {
           scrub: 1,
           pin: true,
           anticipatePin: 1,
+          onUpdate: (self) => {
+            // Hide navbar from when second video starts (70%) until content finishes appearing (after 95%)
+            setIsNavbarVisible(self.progress < 0.7 || self.progress > 0.98);
+          },
         },
       });
 
@@ -90,40 +97,60 @@ export default function HeroSection() {
       tl.to(text, {
         attr: { x: endX },
         ease: "power1.out",
-        duration: 0.7
+        duration: 0.7,
       })
-      // At 70% completion, start moving second video up from bottom (overlapping with text animation)
-      .to(secondVideo, {
-        y: 0, // Move second video up to viewport
-        ease: "power2.out",
-        duration: 0.3
-      }, 0.7) // Start at 70% of timeline
-      // Change text color to black when video is 50% down (at 85% of timeline)
-      .to(text, {
-        attr: { fill: "black" },
-        ease: "none",
-        duration: 0.01
-      }, 0.85) // 70% + (30% * 0.5) = 85% of timeline
-      // Fade out the white mask simultaneously with color change
-      .to(".text-mask-rect", {
-        opacity: 0,
-        ease: "power2.out",
-        duration: 0.15
-      }, 0.85) // Start when text turns black
-      // Content fade in animation (final phase)
-      .to(logo, {
-        opacity: 1,
-        y: 0,
-        ease: "power2.out",
-        duration: 0.05
-      }, 0.9) // Start near end
-      .to(textElements, {
-        opacity: 1,
-        y: 0,
-        ease: "power2.out",
-        duration: 0.05,
-        stagger: 0.01
-      }, 0.95); // Start at very end
+        // At 70% completion, start moving second video up from bottom (overlapping with text animation)
+        .to(
+          secondVideo,
+          {
+            y: 0, // Move second video up to viewport
+            ease: "power2.out",
+            duration: 0.3,
+          },
+          0.7
+        ) // Start at 70% of timeline
+        // Change text color to black when video is 50% down (at 85% of timeline)
+        .to(
+          text,
+          {
+            attr: { fill: "black" },
+            ease: "none",
+            duration: 0.01,
+          },
+          0.85
+        ) // 70% + (30% * 0.5) = 85% of timeline
+        // Fade out the white mask simultaneously with color change
+        .to(
+          ".text-mask-rect",
+          {
+            opacity: 0,
+            ease: "power2.out",
+            duration: 0.15,
+          },
+          0.85
+        ) // Start when text turns black
+        // Content fade in animation (final phase)
+        .to(
+          logo,
+          {
+            opacity: 1,
+            y: 0,
+            ease: "power2.out",
+            duration: 0.05,
+          },
+          0.9
+        ) // Start near end
+        .to(
+          textElements,
+          {
+            opacity: 1,
+            y: 0,
+            ease: "power2.out",
+            duration: 0.05,
+            stagger: 0.01,
+          },
+          0.95
+        ); // Start at very end
     });
 
     return () => {
@@ -134,10 +161,11 @@ export default function HeroSection() {
   // GSAP animations for tablet
   useEffect(() => {
     const container = tabletTextRef.current;
-    if (!container || window.innerWidth >= 1024 || window.innerWidth < 768) return;
+    if (!container || window.innerWidth >= 1024 || window.innerWidth < 768)
+      return;
 
-    const textElement = container.querySelector('.tablet-text');
-    
+    const textElement = container.querySelector(".tablet-text");
+
     gsap.timeline({
       scrollTrigger: {
         trigger: container,
@@ -151,12 +179,12 @@ export default function HeroSection() {
             y: progress * window.innerHeight,
             duration: 0,
           });
-        }
-      }
+        },
+      },
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
@@ -165,19 +193,19 @@ export default function HeroSection() {
     const container = mobileTextRef.current;
     if (!container || window.innerWidth >= 768) return;
 
-    const textElement = container.querySelector('.mobile-text');
-    
+    const textElement = container.querySelector(".mobile-text");
+
     gsap.timeline({
       scrollTrigger: {
         trigger: container,
         start: "top bottom",
         end: "bottom bottom",
         scrub: 0.9,
-      }
+      },
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
@@ -186,14 +214,14 @@ export default function HeroSection() {
     setTimeout(() => {
       setIsHeroLoaded(true);
     }, 1500);
-  }
+  };
 
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      video.addEventListener('loadeddata', handleVideoLoad);
+      video.addEventListener("loadeddata", handleVideoLoad);
       return () => {
-        video.removeEventListener('loadeddata', handleVideoLoad);
+        video.removeEventListener("loadeddata", handleVideoLoad);
       };
     }
   }, []);
@@ -202,7 +230,7 @@ export default function HeroSection() {
     <div
       ref={sectionRef}
       className="relative w-screen overflow-hidden"
-      style={{ height: '100vh' }} // Container height for smooth transition
+      style={{ height: "100vh" }} // Container height for smooth transition
     >
       {/* First Video Element - Main background video */}
       <video
@@ -215,39 +243,39 @@ export default function HeroSection() {
         playsInline
         preload="auto"
         onLoadedData={handleVideoLoad}
-        style={{ 
-          minWidth: '100vw',
-          minHeight: '100vh',
-          maxWidth: '100vw',
-          maxHeight: '100vh'
+        style={{
+          minWidth: "100vw",
+          minHeight: "100vh",
+          maxWidth: "100vw",
+          maxHeight: "100vh",
         }}
       />
 
       {/* Second Video Element - Animates from bottom to top */}
       <video
         ref={secondVideoRef}
-        className="absolute inset-0 z-5 w-screen h-screen object-cover"
+        className="absolute inset-0 z-50 w-screen h-screen object-cover"
         src="/media-hero.mp4"
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
-        style={{ 
-          minWidth: '100vw',
-          minHeight: '100vh',
-          maxWidth: '100vw',
-          maxHeight: '100vh'
+        style={{
+          minWidth: "100vw",
+          minHeight: "100vh",
+          maxWidth: "100vw",
+          maxHeight: "100vh",
         }}
       />
 
       {/* Content overlay - moves with video and centers in new position */}
-      <div 
+      <div
         ref={contentOverlayRef}
-        className="absolute inset-0 flex flex-col items-center justify-center text-center z-20 px-4 pointer-events-none h-screen"
+        className="absolute inset-0 flex flex-col items-center justify-center text-center z-50 px-4 pointer-events-none h-screen"
       >
         <div className="w-full absolute inset-0 h-full"></div>
-        
+
         <img
           src="/logo.png"
           alt="Logo"
@@ -259,7 +287,7 @@ export default function HeroSection() {
             fontFamily: "'Almarai', sans-serif",
             fontWeight: 600,
             letterSpacing: "0.02em",
-            lineHeight: 1.2
+            lineHeight: 1.2,
           }}
         >
           Born from Emirati soil, our roots run deep
@@ -270,7 +298,7 @@ export default function HeroSection() {
             fontFamily: "'Almarai', sans-serif",
             fontWeight: 600,
             letterSpacing: "0.02em",
-            lineHeight: 1.2
+            lineHeight: 1.2,
           }}
         >
           and our vision soars high
@@ -281,7 +309,7 @@ export default function HeroSection() {
       <div className="hidden lg:block">
         <div className="h-screen relative">
           <div className="absolute inset-0 z-10">
-            <div className="sticky top-0 h-screen">
+            <div className="sticky top-10 h-screen">
               <svg
                 className="absolute inset-0 pointer-events-none"
                 width="100%"
@@ -300,7 +328,7 @@ export default function HeroSection() {
                     <text
                       ref={textRef}
                       x="0"
-                      y="60%"
+                      y="70%"
                       dominantBaseline="middle"
                       fontSize="54vw"
                       textAnchor="start"

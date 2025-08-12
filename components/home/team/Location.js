@@ -6,9 +6,9 @@ import Image from "next/image";
 
 const Location = () => {
   return (
-    <section className="bg-black py-4 px-4 lg:px-6 flex flex-col lg:flex-row items-center justify-between gap-6">
+    <section className="bg-black py-15 px-15 lg:px-15 flex  flex-col lg:flex-row items-center justify-between gap-6">
       {/* Text Section */}
-      <div className="flex flex-col justify-between bg-white text-black px-4 w-full sm:h-[60vh] md:h-[50vh] lg:h-[80vh] lg:w-1/2">
+      <div className="flex flex-col justify-between  bg-white text-black px-4 w-full sm:h-[60vh] md:h-[50vh] lg:h-[80vh] lg:w-1/2">
         <div className="mb-10 md:mb-4 lg:mb-20">
           <h1
             className="font-bold  pl-2 sm:pl-4 md:pl-8 lg:pl-10 text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
@@ -44,9 +44,9 @@ const Location = () => {
             We’re always on the lookout for brilliant minds and bold ideas.Check
             out our vacancies and apply for the one that suits you best!
           </p>
-          <div className="pl-2 sm:pl-4 md:pl-8 lg:pl-10 mt-5 lg:mt-10">
+          <div className="pl-2 sm:pl-4 md:pl-8 lg:pl-10 mt-5 mb-10 lg:mt-10">
             <Link href="/careers">
-              <button className="bg-black text-white rounded-md text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px] px-4 sm:px-6 md:px-10 lg:px-12 py-2 sm:py-3 pl-2 sm:pl-4 md:pl-8 lg:pl-12 cursor-pointer hover:bg-gray-200 hover:text-black transition-transform duration-300  font-medium mt-4  max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+              <button className="bg-black text-white rounded-md text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px] px-4 sm:px-6 md:px-6 lg:px-6 py-2 sm:py-3  cursor-pointer hover:bg-gray-200 hover:text-black transition-transform duration-300  font-medium mt-4  max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
                 Join the Team
               </button>
             </Link>
