@@ -3,19 +3,24 @@ import React, { useEffect, useRef, useState } from "react";
 // Team data organized by departments - only titles
 const teamData = {
   strategy: ["Founder & CEO"],
-  creative: ["Art Director", "Animation Team Lead"],
+  creative: ["Art Director", "Animation Lead" , "Animator" ,"JR.ART DIRECTOR" ,"GRAPHIC DESIGNER"],
   social: [
-    "Social Media Manager",
-    "Content Manager",
-    "Community Manager",
-    "Social Media Specialist",
-    "Brand Manager",
+    "ACCOUNT DIRECTOR",
+    "ASSOCIATE DIRECTOR",
+    "ORM LEAD",
+    "SR.ACCOUNT MANAGER",
+    "ACCOUNT MANAGER",
+    "SR.ORM EXECUTIVE",
+    "SR.ACCOUNT EXECUTIVE",
+    "ACCOUNT EXECUTIVE",
+    "ARABIC COPYWRITER",
+    "CONTENT LEAD",
+    "ENGLISH COPYWRITER"
   ],
   production: [
-    "Accountant",
-    "Project Manager",
-    "Human Resources Manager",
-    "Operations Manager",
+    "PRODUCTION Manager",
+    "CREATIVE CONCEPTUALIST",
+    "VIDEO CONTENT CREATORS",
   ],
 };
 
@@ -72,48 +77,107 @@ const MembersSection = () => {
   const generateCirclePositions = (titleCount) => {
     const positions = [
       {
-        top: "8%",
-        left: "10%",
-        size: "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32",
-      },
-      {
-        top: "8%",
-        right: "10%",
-        size: "w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28",
-      },
-      {
-        top: "32%",
-        left: "20%",
-        size: "w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36",
-      },
-      {
-        top: "32%",
-        right: "20%",
-        size: "w-18 h-18 md:w-22 md:h-22 lg:w-26 lg:h-26 xl:w-30 xl:h-30",
-      },
-      {
-        top: "60%",
+        top: "12%",
         left: "8%",
         size: "w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28",
       },
       {
-        top: "60%",
-        right: "8%",
+        top: "8%",
+        right: "15%",
+        size: "w-14 h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20",
+      },
+      {
+        top: "35%",
+        left: "20%",
         size: "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32",
       },
       {
-        top: "80%",
-        left: "30%",
-        size: "w-14 h-14 md:w-18 md:h-18 lg:w-22 lg:h-22 xl:w-26 xl:h-26",
+        top: "32%",
+        right: "22%",
+        size: "w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 xl:w-22 xl:h-22",
       },
       {
-        top: "80%",
-        right: "30%",
-        size: "w-22 h-22 md:w-26 md:h-26 lg:w-30 lg:h-30 xl:w-34 xl:h-34",
+        top: "65%",
+        left: "12%",
+        size: "w-14 h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20",
+      },
+      {
+        top: "58%",
+        right: "10%",
+        size: "w-18 h-18 md:w-20 md:h-20 lg:w-22 lg:h-22 xl:w-24 xl:h-24",
+      },
+      {
+        top: "85%",
+        left: "38%",
+        size: "w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-18 xl:h-18",
+      },
+      {
+        top: "75%",
+        right: "35%",
+        size: "w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 xl:w-22 xl:h-22",
+      },
+      {
+        top: "18%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        size: "w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 xl:w-22 xl:h-22",
+      },
+      {
+        top: "48%",
+        left: "52%",
+        transform: "translate(-50%, -50%)",
+        size: "w-18 h-18 md:w-20 md:h-20 lg:w-22 lg:h-22 xl:w-24 xl:h-24",
+      },
+      {
+        top: "70%",
+        left: "65%",
+        size: "w-20 h-20 md:w-22 md:h-22 lg:w-24 lg:h-24 xl:w-26 xl:h-26",
       },
     ];
 
     return positions.slice(0, titleCount);
+  };
+
+  // Function to get responsive font size based on text length and circle size
+  const getResponsiveFontSize = (text, circleSize) => {
+    const textLength = text.length;
+    
+    // For very small circles
+    if (circleSize.includes('w-12') || circleSize.includes('w-14')) {
+      if (textLength > 15) return "text-[7px] md:text-[8px] lg:text-[9px]";
+      if (textLength > 10) return "text-[8px] md:text-[9px] lg:text-[10px]";
+      return "text-[9px] md:text-[10px] lg:text-[11px]";
+    }
+    
+    // For small circles
+    if (circleSize.includes('w-16') || circleSize.includes('w-18')) {
+      if (textLength > 20) return "text-[8px] md:text-[9px] lg:text-[10px]";
+      if (textLength > 15) return "text-[9px] md:text-[10px] lg:text-[11px]";
+      if (textLength > 10) return "text-[10px] md:text-xs lg:text-xs";
+      return "text-xs md:text-sm lg:text-sm";
+    }
+    
+    // For medium circles
+    if (circleSize.includes('w-20') || circleSize.includes('w-22')) {
+      if (textLength > 20) return "text-[9px] md:text-[10px] lg:text-xs";
+      if (textLength > 15) return "text-[10px] md:text-xs lg:text-sm";
+      if (textLength > 10) return "text-xs md:text-sm lg:text-base";
+      return "text-sm md:text-base lg:text-base";
+    }
+    
+    // For larger circles
+    if (circleSize.includes('w-24') || circleSize.includes('w-26')) {
+      if (textLength > 20) return "text-xs md:text-sm lg:text-sm";
+      if (textLength > 15) return "text-sm md:text-base lg:text-base";
+      if (textLength > 10) return "text-sm md:text-base lg:text-lg";
+      return "text-base md:text-lg lg:text-lg";
+    }
+    
+    // For extra large circles
+    if (textLength > 20) return "text-sm md:text-base lg:text-base";
+    if (textLength > 15) return "text-base md:text-lg lg:text-lg";
+    if (textLength > 10) return "text-base md:text-lg lg:text-xl";
+    return "text-lg md:text-xl lg:text-xl";
   };
 
   // Render circles for desktop hover or mobile/tablet always visible
@@ -122,27 +186,32 @@ const MembersSection = () => {
       const positions = generateCirclePositions(titles.length);
 
       return (
-        <div className="absolute inset-0 p-4 lg:p-8 overflow-hidden">
+        <div className="absolute inset-0 p-3 md:p-4 lg:p-6 xl:p-8 overflow-hidden">
           {titles.map((title, index) => {
             const position = positions[index];
             if (!position) return null;
+
+            const fontSize = getResponsiveFontSize(title, position.size);
 
             return (
               <div
                 key={index}
                 className={`absolute ${
                   position.size
-                } rounded-full flex items-center justify-center text-center p-2 lg:p-3 cursor-pointer transition-all duration-500 ease-out transform ${
+                } rounded-full flex items-center justify-center text-center cursor-pointer transition-all duration-500 ease-out transform ${
                   hoveredTitle === index
                     ? isMobile
-                      ? "bg-green-500 text-white scale-110 shadow-lg"
+                      ? "bg-green-500 text-white scale-105 shadow-lg"
                       : "bg-green-500 text-white scale-110 shadow-lg"
                     : isMobile
                     ? "bg-green-400 text-white hover:bg-green-500 shadow-md"
                     : "bg-white text-gray-800 hover:bg-green-500 hover:text-white border-2 border-gray-200 hover:border-green-500 shadow-md hover:shadow-lg"
                 }`}
                 style={{
-                  ...position,
+                  top: position.top,
+                  left: position.left,
+                  right: position.right,
+                  transform: position.transform || "none",
                   animation:
                     !isMobile && activeSection === department
                       ? `fadeInScale 0.6s ease-out ${index * 0.1}s both`
@@ -151,7 +220,7 @@ const MembersSection = () => {
                 onMouseEnter={() => handleTitleHover(index)}
                 onMouseLeave={handleTitleLeave}
               >
-                <span className="font-medium text-xs lg:text-sm xl:text-base leading-tight text-center">
+                <span className={`font-medium ${fontSize} leading-tight text-center px-1 md:px-2 lg:px-2`}>
                   {title}
                 </span>
               </div>
@@ -224,7 +293,7 @@ const MembersSection = () => {
                 <span className="font-bold text-4xl xl:text-5xl">Strategy</span>
               </div>
 
-              {/* Social Box - Top Right (70% width) */}
+              {/* Creative Box - Bottom Left (70% width) */}
               <div
                 className="bg-white h-[70vh] flex items-center justify-center relative cursor-pointer hover:bg-gray-50 transition-all duration-300 "
                 onMouseEnter={() => handleDepartmentHover("creative")}
@@ -239,10 +308,9 @@ const MembersSection = () => {
               </div>
             </div>
 
-            {/* Bottom Row */}
+            {/* Right Column */}
             <div className="flex h-full flex-col w-[70%] gap-4">
-              {/* Creative Box - Bottom Left (60% width) */}
-
+              {/* Social Box - Top Right (70% width) */}
               <div
                 className="bg-white h-[70vh] flex items-center justify-center relative cursor-pointer hover:bg-gray-50 transition-all duration-300 "
                 onMouseEnter={() => handleDepartmentHover("social")}
@@ -253,7 +321,7 @@ const MembersSection = () => {
                   <span className="font-bold text-4xl xl:text-5xl">Social</span>
                 )}
               </div>
-              {/* Production Box - Bottom Right (40% width) */}
+              {/* Production Box - Bottom Right (30% width) */}
               <div
                 className="bg-white h-[30vh] flex items-center justify-center relative cursor-pointer hover:bg-gray-50 transition-all duration-300 "
                 onMouseEnter={() => handleDepartmentHover("production")}
@@ -285,7 +353,7 @@ const MembersSection = () => {
                 .map(([department, titles]) => (
                   <div
                     key={department}
-                    className="bg-white border-b border-gray-200 min-h-[300px] relative"
+                    className="bg-white border-b border-gray-200 min-h-[350px] relative"
                   >
                     <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
                       <span className="font-bold text-2xl capitalize  px-4 py-2 rounded-lg shadow-sm">
@@ -302,27 +370,26 @@ const MembersSection = () => {
 
         {/* Mobile Layout - All circles visible */}
         <div className="md:hidden">
-          <div className="w-full">
+          <div className="w-full bg-white px-1">
             {/* Strategy Box */}
             <div className="bg-black text-white text-center py-8">
               <span className="font-bold text-2xl">Strategy</span>
             </div>
 
             {/* All sections visible with circles */}
-            <div className="space-y-0">
+            <div className="space-y-2">
               {Object.entries(teamData)
                 .filter(([dept]) => dept !== "strategy")
                 .map(([department, titles]) => (
                   <div
                     key={department}
-                    className="bg-white border-b border-gray-200 min-h-[250px] relative"
+                    className="bg-[#FAFAFA] border-gray-200 min-h-[350px] relative mx-1"
                   >
-                    <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
-                      <span className="font-bold text-xl capitalize bg-white px-3 py-1 rounded-lg shadow-sm">
+                    <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10"> 
+                      <span className="font-bold text-xl capitalize px-3 py-1 rounded-lg">
                         {department}
                       </span>
                     </div>
-
                     {renderCircles(department, titles)}
                   </div>
                 ))}
