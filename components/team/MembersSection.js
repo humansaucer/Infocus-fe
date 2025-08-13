@@ -194,36 +194,37 @@ const MembersSection = () => {
             const fontSize = getResponsiveFontSize(title, position.size);
 
             return (
-              <div
-                key={index}
-                className={`absolute ${
-                  position.size
-                } rounded-full flex items-center justify-center text-center cursor-pointer transition-all duration-500 ease-out transform ${
-                  hoveredTitle === index
-                    ? isMobile
-                      ? "bg-green-500 text-white scale-105 shadow-lg"
-                      : "bg-green-500 text-white scale-110 shadow-lg"
-                    : isMobile
-                    ? "bg-green-400 text-white hover:bg-green-500 shadow-md"
-                    : "bg-white text-gray-800 hover:bg-green-500 hover:text-white border-2 border-gray-200 hover:border-green-500 shadow-md hover:shadow-lg"
-                }`}
-                style={{
-                  top: position.top,
-                  left: position.left,
-                  right: position.right,
-                  transform: position.transform || "none",
-                  animation:
-                    !isMobile && activeSection === department
-                      ? `fadeInScale 0.6s ease-out ${index * 0.1}s both`
-                      : "none",
-                }}
-                onMouseEnter={() => handleTitleHover(index)}
-                onMouseLeave={handleTitleLeave}
-              >
-                <span className={`font-medium ${fontSize} leading-tight text-center px-1 md:px-2 lg:px-2`}>
-                  {title}
-                </span>
-              </div>
+            // Replace the circle div in renderCircles function with this:
+<div
+  key={index}
+  className={`absolute ${
+    position.size
+  } rounded-full flex items-center justify-center text-center cursor-pointer transition-all duration-300 ease-in-out ${
+    hoveredTitle === index
+      ? isMobile
+        ? "bg-green-500 text-white scale-105 shadow-lg"
+        : "bg-green-500 text-black scale-110 shadow-lg border-2 border-green-500"
+      : isMobile
+      ? "bg-green-400 text-white hover:bg-green-500 shadow-md"
+      : "bg-white text-black hover:bg-green-500 hover:text-black border-2 border-gray-200 hover:border-green-500 shadow-md hover:shadow-lg hover:scale-110"
+  }`}
+  style={{
+    top: position.top,
+    left: position.left,
+    right: position.right,
+    transform: position.transform || "none",
+    animation:
+      !isMobile && activeSection === department
+        ? `fadeInScale 0.6s ease-out ${index * 0.1}s both`
+        : "none",
+  }}
+  onMouseEnter={() => handleTitleHover(index)}
+  onMouseLeave={handleTitleLeave}
+>
+  <span className={`font-bold ${fontSize} leading-tight text-center px-1 md:px-2 lg:px-2`}>
+    {title}
+  </span>
+</div>  
             );
           })}
         </div>
@@ -282,10 +283,10 @@ const MembersSection = () => {
       </div>
 
       {/* Main Grid Layout */}
-      <div className="w-full flex-1">
+      <div className="bg-white w-full flex-1">
         {/* Desktop Layout - Custom Grid with no gaps */}
-        <div className="hidden lg:block h-screen">
-          <div className="h-full w-full flex flex-row gap-4">
+        <div className="hidden lg:block h-screen ">
+          <div className="h-full w-full flex flex-row gap-4 px-8">
             {/* Top Row */}
             <div className="flex h-full flex-col w-[30%] gap-4">
               {/* Strategy Box - Top Left (30% width) */}
@@ -295,7 +296,7 @@ const MembersSection = () => {
 
               {/* Creative Box - Bottom Left (70% width) */}
               <div
-                className="bg-white h-[70vh] flex items-center justify-center relative cursor-pointer hover:bg-gray-50 transition-all duration-300 "
+                className="h-[70vh] flex items-center justify-center relative cursor-pointer bg-gray-50 hover:bg-gray-50 transition-all duration-300 "
                 onMouseEnter={() => handleDepartmentHover("creative")}
                 onMouseLeave={handleDepartmentLeave}
               >
@@ -312,7 +313,7 @@ const MembersSection = () => {
             <div className="flex h-full flex-col w-[70%] gap-4">
               {/* Social Box - Top Right (70% width) */}
               <div
-                className="bg-white h-[70vh] flex items-center justify-center relative cursor-pointer hover:bg-gray-50 transition-all duration-300 "
+                className=" h-[70vh] flex items-center justify-center relative cursor-pointer bg-gray-50 hover:bg-gray-50 transition-all duration-300 "
                 onMouseEnter={() => handleDepartmentHover("social")}
                 onMouseLeave={handleDepartmentLeave}
               >
@@ -323,7 +324,7 @@ const MembersSection = () => {
               </div>
               {/* Production Box - Bottom Right (30% width) */}
               <div
-                className="bg-white h-[30vh] flex items-center justify-center relative cursor-pointer hover:bg-gray-50 transition-all duration-300 "
+                className="h-[30vh] flex items-center justify-center relative cursor-pointer bg-gray-50 hover:bg-gray-50 transition-all duration-300 "
                 onMouseEnter={() => handleDepartmentHover("production")}
                 onMouseLeave={handleDepartmentLeave}
               >
