@@ -73,50 +73,139 @@ const MembersSection = () => {
     setHoveredTitle(null);
   };
 
-  // Generate circle positions dynamically based on number of titles - all same size, closer together
-  const generateCirclePositions = (titleCount) => {
-    // Standard size for all circles - responsive
-    const standardSize = "w-20 h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28";
-    
-    // Compact grid-like positions with proper spacing to avoid overlaps
+  // Desktop position functions
+  const getCreativeDesktopPositions = (titleCount) => {
+    const standardSize = "w-20 h-20 lg:w-30 lg:h-30 xl:w-40 xl:h-40";
     const positions = [
-      // Row 1
-      { top: "22%", left: "18%", size: standardSize },
-      { top: "25%", left: "39.4%", size: standardSize },
-      { top: "22%", left: "61%", size: standardSize },
-      
-      // Row 2
-      { top: "44%", left: "27%", size: standardSize },
-      { top: "44%", left: "52%", size: standardSize },
-      
-      // Row 3
+      { top: "17%", left: "10%", size: standardSize },
+      { top: "18%", left: "60%", size: standardSize },
+      { top: "40%", left: "35%", size: standardSize },
       { top: "60%", left: "10%", size: standardSize },
-      { top: "60%", left: "35%", size: standardSize },
       { top: "60%", left: "60%", size: standardSize },
-      
-      // Row 4
-      { top: "73%", left: "20%", size: standardSize },
-      { top: "73%", left: "50%", size: standardSize },
-      { top: "73%", left: "75%", size: standardSize },
     ];
-
     return positions.slice(0, titleCount);
   };
 
-  // Function to get responsive font size - simplified for uniform circles
-  const getResponsiveFontSize = (text) => {
+  const getSocialDesktopPositions = (titleCount) => {
+    const standardSize = "w-20 h-20 lg:w-30 lg:h-30 xl:w-40 xl:h-40";
+    const positions = [
+      { top: "12%", left: "10%", size: standardSize },
+      { top: "29%", left: "34%", size: standardSize },
+      { top: "20%", left: "49%", size: standardSize },
+      { top: "15%", left: "70%", size: standardSize },
+      { top: "35%", left: "20%", size: standardSize },
+      { top: "39%", left: "60%", size: standardSize },
+      { top: "58%", left: "5%", size: standardSize },
+      { top: "58%", left: "40%", size: standardSize },
+      { top: "58%", left: "75%", size: standardSize },
+      { top: "66%", left: "25%", size: standardSize },
+      { top: "67%", left: "53%", size: standardSize },
+    ];
+    return positions.slice(0, titleCount);
+  };
+
+  const getProductionDesktopPositions = (titleCount) => {
+    const standardSize = "w-20 h-20 lg:w-30 lg:h-30 xl:w-40 xl:h-40";
+    const positions = [
+      { top: "30%", left: "30%", size: standardSize },
+      { top: "30%", left: "44%", size: standardSize },
+      { top: "30%", left: "58%", size: standardSize },
+    ];
+    return positions.slice(0, titleCount);
+  };
+
+  // Mobile position functions based on design images
+  const getCreativeMobilePositions = (titleCount) => {
+    const positions = [
+      { top: "25%", left: "60%", size: "w-24 h-24" }, // ART DIRECTOR - large, top right
+      { top: "15%", left: "15%", size: "w-24 h-24" }, // ANIMATION LEAD - large, top left
+      { top: "40%", left: "5%", size: "w-20 h-20" }, // ANIMATOR - medium, left
+      { top: "50%", left: "50%", size: "w-20 h-20" }, // JR.ART DIRECTOR - medium, center
+      { top: "71 %", left: "65%", size: "w-16 h-16" }, // GRAPHIC DESIGNER - small, bottom right
+    ];
+    return positions.slice(0, titleCount);
+  };
+
+  const getSocialMobilePositions = (titleCount) => {
+    const positions = [
+      { top: "12%", left: "7%", size: "w-24 h-24" }, // ACCOUNT DIRECTOR - large, top left
+      { top: "29%", left: "27%", size: "w-20 h-20" }, // ASSOCIATE DIRECTOR - medium, center left
+      { top: "44%", left: "42%", size: "w-16 h-16" }, // ACCOUNT MANAGER - small, center
+      { top: "18%", left: "65%", size: "w-24 h-24" }, // ORM LEAD - large, top right
+      { top: "38%", left: "79%", size: "w-18 h-18" }, // SR.ORM EXECUTIVE - medium, right
+      { top: "43%", left: "10%", size: "w-20 h-20" }, // SR.ACCOUNT MANAGER - medium, left
+      { top: "59%", left: "23%", size: "w-16 h-16" }, // SR.ACCOUNT EXECUTIVE - medium, bottom left
+      { top: "74%", left: "15%", size: "w-16 h-16" }, // ACCOUNT EXECUTIVE - small, bottom left
+      { top: "61%", left: "75%", size: "w-24 h-24" }, // CONTENT LEAD - large, bottom right
+      { top: "71%", left: "55%", size: "w-18 h-18" }, // ARABIC COPYWRITER - medium, bottom center
+      { top: "84%", left: "68%", size: "w-18 h-18" }, // ENGLISH COPYWRITER - medium, very bottom
+    ];
+    return positions.slice(0, titleCount);
+  };
+
+  const getProductionMobilePositions = (titleCount) => {
+    const positions = [
+      { top: "15%", left: "70%", size: "w-24 h-24" }, // PRODUCTION MANAGER - large, top right
+      { top: "35%", left: "53%", size: "w-20 h-20" }, // CREATIVE CONCEPTUALIST - medium, center
+      { top: "65%", left: "7%", size: "w-16 h-16" }, // VIDEO CONTENT CREATORS - medium, bottom left
+    ];
+    return positions.slice(0, titleCount);
+  };
+
+  // Main function to get positions based on department and device type
+  const getCirclePositions = (department, titleCount, isDesktop = false) => {
+    if (isDesktop) {
+      switch (department) {
+        case "creative":
+          return getCreativeDesktopPositions(titleCount);
+        case "social":
+          return getSocialDesktopPositions(titleCount);
+        case "production":
+          return getProductionDesktopPositions(titleCount);
+        default:
+          return [];
+      }
+    } else {
+      switch (department) {
+        case "creative":
+          return getCreativeMobilePositions(titleCount);
+        case "social":
+          return getSocialMobilePositions(titleCount);
+        case "production":
+          return getProductionMobilePositions(titleCount);
+        default:
+          return [];
+      }
+    }
+  };
+
+  // Function to get responsive font size based on circle size and text length
+  const getResponsiveFontSize = (text, circleSize = "medium", isMobile = false) => {
     const textLength = text.length;
     
-    // Base font sizes for the standard circle size
+    if (isMobile) {
+      // Mobile font sizes based on circle size
+      if (circleSize.includes("w-16")) { // Small circles
+        return textLength > 15 ? "text-[7px]" : "text-[8px]";
+      } else if (circleSize.includes("w-18")) { // Medium-small circles
+        return textLength > 15 ? "text-[8px]" : "text-[9px]";
+      } else if (circleSize.includes("w-20")) { // Medium circles
+        return textLength > 15 ? "text-[9px]" : "text-[10px]";
+      } else { // Large circles (w-24)
+        return textLength > 15 ? "text-[10px]" : "text-[11px]";
+      }
+    }
+    
+    // Desktop font sizes
     if (textLength > 20) return "text-[8px] lg:text-[9px] xl:text-[10px]";
     if (textLength > 15) return "text-[9px] lg:text-[10px] xl:text-xs";
     if (textLength > 10) return "text-[10px] lg:text-xs xl:text-sm";
     return "text-xs lg:text-sm xl:text-base";
   };
 
-  // Render circles - always present, no animation
+  // Render circles function
   const renderCircles = (department, titles, isDesktop = false) => {
-    const positions = generateCirclePositions(titles.length);
+    const positions = getCirclePositions(department, titles.length, isDesktop);
 
     return (
       <div className="absolute inset-0 p-4 lg:p-6 xl:p-8">
@@ -124,16 +213,16 @@ const MembersSection = () => {
           const position = positions[index];
           if (!position) return null;
 
-          const fontSize = getResponsiveFontSize(title);
+          const fontSize = getResponsiveFontSize(title, position.size, !isDesktop);
 
           return (
             <div
               key={index}
               className={`absolute ${
                 position.size
-              } rounded-full flex items-center justify-center text-center cursor-pointer transition-all duration-300 ease-in-out outline-none focus:outline-none border-0 focus:border-0 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:border-0 ${
+              } rounded-full flex items-center justify-center text-center cursor-pointer transition-all duration-1000 ease-in-out outline-none focus:outline-none border-0 focus:border-0 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:border-0 ${
                 hoveredTitle === index
-                  ? `${isDesktop ? 'bg-white' : 'bg-[#00E776] hover:bg-[#00E776]'} text-black scale-105 shadow-lg border-2 ${isDesktop ? 'border-white' : 'border-[#00E776]'}`
+                  ? `${isDesktop ? 'bg-white' : 'bg-[#00E776] hover:bg-[#00E776]'} text-black scale-105 shadow-lg border-2 ${isDesktop ? 'border-white' : 'border-white'}`
                   : `${isDesktop ? 'bg-white' : 'bg-[#00E776] hover:bg-[#00E776]'} text-black ${isDesktop ? 'hover:bg-gray-100' : ''} shadow-md hover:shadow-lg hover:scale-105`
               }`}
               style={{
@@ -304,11 +393,11 @@ const MembersSection = () => {
           </div>
         </div>
 
-        {/* Mobile Layout - All circles visible */}
+        {/* Mobile Layout - All circles visible with design-based positioning */}
         <div className="md:hidden">
-          <div className="w-full bg-white px-1">
+          <div className="w-full bg-white px-3">
             {/* Strategy Box */}
-            <div className="bg-black text-white text-center py-8">
+            <div className="bg-black text-white text-center py-8 mb-3">
               <span className="font-bold text-2xl">Strategy</span>
             </div>
 
@@ -319,14 +408,17 @@ const MembersSection = () => {
                 .map(([department, titles]) => (
                   <div
                     key={department}
-                    className="bg-[#FAFAFA] border-gray-200 min-h-[350px] relative mx-1"
+                    className="bg-[#FAFAFA] border-gray-200 relative mx-1"
+                    style={{ 
+                      minHeight: department === "social" ? "450px" : "350px" // Extra height for social section
+                    }}
                   >
                     <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10"> 
-                      <span className="font-bold text-xl capitalize px-3 py-1 rounded-lg">
+                      <span className="font-bold text-3xl capitalize px-3 py-1 rounded-lg">
                         {department}
                       </span>
                     </div>
-                    <div className="absolute inset-0 ">
+                    <div className="absolute inset-0">
                       {renderCircles(department, titles, false)}
                     </div>
                   </div>
