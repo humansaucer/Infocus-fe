@@ -16,7 +16,7 @@ const ApplyingModal = ({ id, title, onClose, onApplySuccess }) => {
       />
       {/* Modal Box */}
       <div className="relative bg-white shadow-lg p-6 w-full max-w-md z-10">
-        <h2 className="text-[22px] font-bold mb-4 text-left"> {title}</h2>
+        <h2 className="text-[22px] font-bold mb-4 text-left uppercase"> {title}</h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
             type="text"

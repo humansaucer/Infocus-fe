@@ -6,7 +6,7 @@ import Notification from "../Notification";
 const vacancies = [
   {
     id: 1,
-    title: "3D Animator",
+    title: "3D Motion Designer",
     location: "Remote",
     type: "Full-time",
     rote: "You’ll be responsible for bringing ideas to life through stunning 3D animations, visual storytelling, and motion graphics for digital campaigns, product visuals, and brand content.",
@@ -124,7 +124,7 @@ const VacanciesSection = () => {
                     className="flex items-center justify-between p-4 cursor-pointer transition-all duration-300 ease-in-out hover:bg-gray-50"
                     onClick={() => toggleOpen(job.id)}
                   >
-                    <h3 className="text-[22px] md:text-[40px] font-bold">
+                    <h3 className="text-[22px] md:text-[40px] font-bold uppercase">
                       {job.title}
                     </h3>
                     <div className="relative w-5 h-5 flex items-center justify-center">
@@ -167,7 +167,7 @@ const VacanciesSection = () => {
 
                       <div>
                         <p className="font-bold sub-heading tracking-wide mt-8 mb-3 text-[16px] md:text-[18px] lg:[text-22px] text-black/50">
-                          ABOUT ROLE
+                          ABOUT THE ROLE
                         </p>
                         <p className="text-[16px] md:text-[18px] lg:[text-22px] sub-heading">
                           {job.rote}
@@ -179,7 +179,7 @@ const VacanciesSection = () => {
                           onClick={() => handleApplyClick(job)}
                           className="font-semibold cursor-pointer hover:bg-gray-200 hover:text-black bg-black text-white px-4 py-2 rounded-md hover:opacity-90 text-[16px] md:text-[18px] lg:[text-22px]"
                         >
-                          Apply Now
+                          Apply 
                         </button>
                         <a
                           href="https://www.linkedin.com/company/infocusmediaae/"
