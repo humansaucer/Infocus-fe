@@ -133,8 +133,8 @@ const MembersSection = () => {
                 position.size
               } rounded-full flex items-center justify-center text-center cursor-pointer transition-all duration-300 ease-in-out outline-none focus:outline-none border-0 focus:border-0 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:border-0 ${
                 hoveredTitle === index
-                  ? `${isDesktop ? 'bg-white' : 'bg-green-400 hover:bg-green-500'} text-black scale-105 shadow-lg border-2 ${isDesktop ? 'border-white' : 'border-green-600'}`
-                  : `${isDesktop ? 'bg-white' : 'bg-green-400 hover:bg-green-500'} text-black ${isDesktop ? 'hover:bg-gray-100' : ''} shadow-md hover:shadow-lg hover:scale-105`
+                  ? `${isDesktop ? 'bg-white' : 'bg-[#00E776] hover:bg-[#00E776]'} text-black scale-105 shadow-lg border-2 ${isDesktop ? 'border-white' : 'border-[#00E776]'}`
+                  : `${isDesktop ? 'bg-white' : 'bg-[#00E776] hover:bg-[#00E776]'} text-black ${isDesktop ? 'hover:bg-gray-100' : ''} shadow-md hover:shadow-lg hover:scale-105`
               }`}
               style={{
                 top: position.top,
@@ -172,7 +172,7 @@ const MembersSection = () => {
         onMouseLeave={handleDepartmentLeave}
       >
         {/* Green background with circles - always present */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-green-500 to-green-600">
+        <div className="absolute inset-0 bg-[#00E776]">
           {renderCircles(department, titles, true)}
         </div>
 
@@ -183,7 +183,7 @@ const MembersSection = () => {
           }`}
         >
           <div className="w-full h-full flex items-center justify-center">
-            <span className="font-bold text-4xl xl:text-5xl text-black">
+            <span className="font-bold text-4xl xl:text-[64px] text-black">
               {sectionTitle}
             </span>
           </div>
@@ -197,7 +197,7 @@ const MembersSection = () => {
               : 'top-1/2 -translate-y-1/2 opacity-0 pointer-events-none'
           }`}
         >
-          <span className="font-bold text-3xl xl:text-4xl text-black">
+          <span className="font-bold text-4xl xl:text-[48px] text-black">
             {sectionTitle}
           </span>
         </div>
@@ -220,15 +220,15 @@ const MembersSection = () => {
           {/* Green line extending downward */}
           <div
             ref={lineRef}
-            className="w-0.5 bg-green-500 mx-auto"
+            className="w-0.5 bg-[#00E776] mx-auto"
             style={{ height: "60px", width: "1px" }}
           ></div>
-          <div className="w-5 h-5 bg-green-400 rounded-full mx-auto mb-6"></div>
+          <div className="w-5 h-5 bg-[#00E776] rounded-full mx-auto mb-6"></div>
 
           <h2 className="relative font-bold text-[24px] md:text-[36px] lg:text-[42px] mt-6">
             Agency Team
-            <div className="hidden md:block w-[1px] absolute top-[100%] left-0 right-0 h-8 bg-green-500 mx-auto mt-6"></div>
-            <div className="max-w-[2500px] absolute md:top-[150%] top-[190%] left-[-20%] right-[-20%] md:left-[-110%] md:right-[-110%] h-[1px] bg-green-500 mx-auto mt-6"></div>
+            <div className="hidden md:block w-[1px] absolute top-[100%] left-0 right-0 h-8 bg-[#00E776] mx-auto mt-6"></div>
+            <div className="max-w-[2500px] absolute md:top-[150%] top-[190%] left-[-20%] right-[-20%] md:left-[-110%] md:right-[-110%] h-[1px] bg-[#00E776] mx-auto mt-6"></div>
           </h2>
         </div>
       </div>
@@ -242,7 +242,7 @@ const MembersSection = () => {
             <div className="flex h-full flex-col w-[30%] gap-4">
               {/* Strategy Box - No hover effect */}
               <div className="bg-black h-[243px] text-white flex items-center justify-center relative">
-                <span className="font-bold text-4xl xl:text-5xl">Strategy</span>
+                <span className="font-bold text-4xl xl:text-[64px]">Strategy</span>
               </div>
 
               {/* Creative Box */}
@@ -295,7 +295,7 @@ const MembersSection = () => {
                       </span>
                     </div>
 
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-green-500 to-green-600">
+                    <div className="absolute inset-0 bg-[#00E776]">
                       {renderCircles(department, titles, false)}
                     </div>
                   </div>
