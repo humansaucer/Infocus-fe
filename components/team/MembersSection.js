@@ -81,23 +81,23 @@ const MembersSection = () => {
     // Compact grid-like positions with proper spacing to avoid overlaps
     const positions = [
       // Row 1
-      { top: "15%", left: "15%", size: standardSize },
-      { top: "15%", left: "40%", size: standardSize },
-      { top: "15%", left: "65%", size: standardSize },
+      { top: "22%", left: "18%", size: standardSize },
+      { top: "25%", left: "39.4%", size: standardSize },
+      { top: "22%", left: "61%", size: standardSize },
       
       // Row 2
-      { top: "35%", left: "25%", size: standardSize },
-      { top: "35%", left: "55%", size: standardSize },
+      { top: "44%", left: "27%", size: standardSize },
+      { top: "44%", left: "52%", size: standardSize },
       
       // Row 3
-      { top: "55%", left: "10%", size: standardSize },
-      { top: "55%", left: "35%", size: standardSize },
-      { top: "55%", left: "60%", size: standardSize },
+      { top: "60%", left: "10%", size: standardSize },
+      { top: "60%", left: "35%", size: standardSize },
+      { top: "60%", left: "60%", size: standardSize },
       
       // Row 4
-      { top: "75%", left: "20%", size: standardSize },
-      { top: "75%", left: "50%", size: standardSize },
-      { top: "75%", left: "75%", size: standardSize },
+      { top: "73%", left: "20%", size: standardSize },
+      { top: "73%", left: "50%", size: standardSize },
+      { top: "73%", left: "75%", size: standardSize },
     ];
 
     return positions.slice(0, titleCount);
@@ -115,7 +115,7 @@ const MembersSection = () => {
   };
 
   // Render circles - always present, no animation
-  const renderCircles = (department, titles) => {
+  const renderCircles = (department, titles, isDesktop = false) => {
     const positions = generateCirclePositions(titles.length);
 
     return (
@@ -133,8 +133,8 @@ const MembersSection = () => {
                 position.size
               } rounded-full flex items-center justify-center text-center cursor-pointer transition-all duration-300 ease-in-out outline-none focus:outline-none border-0 focus:border-0 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:border-0 ${
                 hoveredTitle === index
-                  ? "bg-white text-black scale-105 shadow-lg border-2 border-white"
-                  : "bg-white text-black hover:bg-gray-100 shadow-md hover:shadow-lg hover:scale-105"
+                  ? `${isDesktop ? 'bg-white' : 'bg-green-400 hover:bg-green-500'} text-black scale-105 shadow-lg border-2 ${isDesktop ? 'border-white' : 'border-green-600'}`
+                  : `${isDesktop ? 'bg-white' : 'bg-green-400 hover:bg-green-500'} text-black ${isDesktop ? 'hover:bg-gray-100' : ''} shadow-md hover:shadow-lg hover:scale-105`
               }`}
               style={{
                 top: position.top,
@@ -142,7 +142,7 @@ const MembersSection = () => {
                 right: position.right,
                 transform: position.transform || "none",
                 outline: "none !important",
-                border: hoveredTitle === index ? "2px solid white" : "none !important",
+                border: hoveredTitle === index ? `2px solid ${isDesktop ? 'white' : '#16a34a'}` : "none !important",
                 boxShadow: hoveredTitle === index ? "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" : "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
               }}
               onMouseEnter={() => handleTitleHover(index)}
@@ -173,7 +173,7 @@ const MembersSection = () => {
       >
         {/* Green background with circles - always present */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-green-500 to-green-600">
-          {renderCircles(department, titles)}
+          {renderCircles(department, titles, true)}
         </div>
 
         {/* Gray overlay with title */}
@@ -241,12 +241,12 @@ const MembersSection = () => {
             {/* Left Column */}
             <div className="flex h-full flex-col w-[30%] gap-4">
               {/* Strategy Box - No hover effect */}
-              <div className="bg-black h-[30vh] text-white flex items-center justify-center relative">
+              <div className="bg-black h-[243px] text-white flex items-center justify-center relative">
                 <span className="font-bold text-4xl xl:text-5xl">Strategy</span>
               </div>
 
               {/* Creative Box */}
-              <div className="h-[70vh]">
+              <div className="h-[513px]">
                 {renderDesktopSection("creative", teamData.creative, "Creative")}
               </div>
             </div>
@@ -254,7 +254,7 @@ const MembersSection = () => {
             {/* Right Column */}
             <div className="flex h-full flex-col w-[70%] gap-4">
               {/* Top Right Row */}
-              <div className="flex h-[70vh] gap-4">
+              <div className="flex h-[494px] gap-4">
                 {/* Social Box */}
                 <div className="w-full">
                   {renderDesktopSection("social", teamData.social, "Social")}
@@ -262,7 +262,7 @@ const MembersSection = () => {
               </div>
 
               {/* Bottom Right Row */}
-              <div className="flex h-[30vh] gap-4">
+              <div className="flex h-[262px] gap-4">
                 {/* Production Box */}
                 <div className="w-full">
                   {renderDesktopSection("production", teamData.production, "Production")}
@@ -296,7 +296,7 @@ const MembersSection = () => {
                     </div>
 
                     <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-green-500 to-green-600">
-                      {renderCircles(department, titles)}
+                      {renderCircles(department, titles, false)}
                     </div>
                   </div>
                 ))}
@@ -326,8 +326,8 @@ const MembersSection = () => {
                         {department}
                       </span>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-green-500 to-green-600">
-                      {renderCircles(department, titles)}
+                    <div className="absolute inset-0 ">
+                      {renderCircles(department, titles, false)}
                     </div>
                   </div>
                 ))}
