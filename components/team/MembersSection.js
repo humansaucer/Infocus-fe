@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -117,37 +118,37 @@ const MembersSection = () => {
   // Mobile position functions based on design images
   const getCreativeMobilePositions = (titleCount) => {
     const positions = [
-      { top: "25%", left: "60%", size: "w-24 h-24" }, // ART DIRECTOR - large, top right
-      { top: "15%", left: "15%", size: "w-24 h-24" }, // ANIMATION LEAD - large, top left
-      { top: "40%", left: "5%", size: "w-20 h-20" }, // ANIMATOR - medium, left
-      { top: "50%", left: "50%", size: "w-20 h-20" }, // JR.ART DIRECTOR - medium, center
-      { top: "71%", left: "65%", size: "w-16 h-16" }, // GRAPHIC DESIGNER - small, bottom right
+      { top: "25%", left: "60%", size: "w-24 h-24", transform: "rotate(-8deg)" }, // ART DIRECTOR - large, top right
+      { top: "15%", left: "15%", size: "w-24 h-24", transform: "rotate(12deg)" }, // ANIMATION LEAD - large, top left
+      { top: "40%", left: "5%", size: "w-20 h-20", transform: "rotate(-15deg)" }, // ANIMATOR - medium, left
+      { top: "50%", left: "50%", size: "w-20 h-20", transform: "rotate(18deg)" }, // JR.ART DIRECTOR - medium, center
+      { top: "71%", left: "65%", size: "w-16 h-16", transform: "rotate(-10deg)" }, // GRAPHIC DESIGNER - small, bottom right
     ];
     return positions.slice(0, titleCount);
   };
 
   const getSocialMobilePositions = (titleCount) => {
     const positions = [
-      { top: "12%", left: "7%", size: "w-24 h-24" }, // ACCOUNT DIRECTOR - large, top left
-      { top: "29%", left: "27%", size: "w-20 h-20" }, // ASSOCIATE DIRECTOR - medium, center left
-      { top: "44%", left: "42%", size: "w-16 h-16" }, // ACCOUNT MANAGER - small, center
-      { top: "18%", left: "65%", size: "w-24 h-24" }, // ORM LEAD - large, top right
-      { top: "38%", left: "79%", size: "w-18 h-18" }, // SR.ORM EXECUTIVE - medium, right
-      { top: "43%", left: "10%", size: "w-20 h-20" }, // SR.ACCOUNT MANAGER - medium, left
-      { top: "59%", left: "23%", size: "w-16 h-16" }, // SR.ACCOUNT EXECUTIVE - medium, bottom left
-      { top: "74%", left: "15%", size: "w-16 h-16" }, // ACCOUNT EXECUTIVE - small, bottom left
-      { top: "61%", left: "75%", size: "w-24 h-24" }, // CONTENT LEAD - large, bottom right
-      { top: "71%", left: "55%", size: "w-18 h-18" }, // ARABIC COPYWRITER - medium, bottom center
-      { top: "84%", left: "68%", size: "w-18 h-18" }, // ENGLISH COPYWRITER - medium, very bottom
+      { top: "12%", left: "7%", size: "w-24 h-24", transform: "rotate(15deg)" }, // ACCOUNT DIRECTOR - large, top left
+      { top: "29%", left: "27%", size: "w-20 h-20", transform: "rotate(-12deg)" }, // ASSOCIATE DIRECTOR - medium, center left
+      { top: "44%", left: "42%", size: "w-16 h-16", transform: "rotate(20deg)" }, // ACCOUNT MANAGER - small, center
+      { top: "18%", left: "65%", size: "w-24 h-24", transform: "rotate(-18deg)" }, // ORM LEAD - large, top right
+      { top: "38%", left: "79%", size: "w-18 h-18", transform: "rotate(25deg)" }, // SR.ORM EXECUTIVE - medium, right
+      { top: "43%", left: "10%", size: "w-20 h-20", transform: "rotate(-8deg)" }, // SR.ACCOUNT MANAGER - medium, left
+      { top: "59%", left: "23%", size: "w-16 h-16", transform: "rotate(14deg)" }, // SR.ACCOUNT EXECUTIVE - medium, bottom left
+      { top: "74%", left: "15%", size: "w-16 h-16", transform: "rotate(-22deg)" }, // ACCOUNT EXECUTIVE - small, bottom left
+      { top: "61%", left: "75%", size: "w-24 h-24", transform: "rotate(10deg)" }, // CONTENT LEAD - large, bottom right
+      { top: "71%", left: "55%", size: "w-18 h-18", transform: "rotate(-16deg)" }, // ARABIC COPYWRITER - medium, bottom center
+      { top: "84%", left: "68%", size: "w-18 h-18", transform: "rotate(18deg)" }, // ENGLISH COPYWRITER - medium, very bottom
     ];
     return positions.slice(0, titleCount);
   };
 
   const getProductionMobilePositions = (titleCount) => {
     const positions = [
-      { top: "15%", left: "70%", size: "w-24 h-24" }, // PRODUCTION MANAGER - large, top right
-      { top: "35%", left: "53%", size: "w-20 h-20" }, // CREATIVE CONCEPTUALIST - medium, center
-      { top: "65%", left: "7%", size: "w-16 h-16" }, // VIDEO CONTENT CREATORS - medium, bottom left
+      { top: "15%", left: "70%", size: "w-24 h-24", transform: "rotate(-14deg)" }, // PRODUCTION MANAGER - large, top right
+      { top: "35%", left: "53%", size: "w-20 h-20", transform: "rotate(16deg)" }, // CREATIVE CONCEPTUALIST - medium, center
+      { top: "65%", left: "7%", size: "w-16 h-16", transform: "rotate(-20deg)" }, // VIDEO CONTENT CREATORS - medium, bottom left
     ];
     return positions.slice(0, titleCount);
   };
@@ -229,7 +230,7 @@ const MembersSection = () => {
                 top: position.top,
                 left: position.left,
                 right: position.right,
-                transform: position.transform || "none",
+                transform: position.transform || "",
                 outline: "none !important",
                 border: hoveredTitle === index ? `2px solid ${isDesktop ? 'white' : '#16a34a'}` : "none !important",
                 boxShadow: hoveredTitle === index ? "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" : "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
