@@ -121,7 +121,7 @@ const MembersSection = () => {
       { top: "15%", left: "15%", size: "w-24 h-24" }, // ANIMATION LEAD - large, top left
       { top: "40%", left: "5%", size: "w-20 h-20" }, // ANIMATOR - medium, left
       { top: "50%", left: "50%", size: "w-20 h-20" }, // JR.ART DIRECTOR - medium, center
-      { top: "71 %", left: "65%", size: "w-16 h-16" }, // GRAPHIC DESIGNER - small, bottom right
+      { top: "71%", left: "65%", size: "w-16 h-16" }, // GRAPHIC DESIGNER - small, bottom right
     ];
     return positions.slice(0, titleCount);
   };
