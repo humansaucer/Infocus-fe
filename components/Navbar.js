@@ -487,8 +487,8 @@ const Navbar = ({ navbarVisible = true }) => {
             className={`p-1.5 h-12 w-12 sm:w-[64px] sm:h-[64px] flex flex-col items-center justify-center rounded-sm transition cursor-pointer ${bgColor1}`}
           >
             <svg
-              width="10"
-              height="10"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               className="sm:w-[24px] sm:h-[24px]"
@@ -508,8 +508,8 @@ const Navbar = ({ navbarVisible = true }) => {
           >
             {menuOpen ? (
               <svg
-                width="8"
-                height="8"
+                width="15"
+                height="15"
                 viewBox="0 0 24 24"
                 fill="none"
                 className="sm:w-[24px] sm:h-[24px]"
@@ -533,8 +533,8 @@ const Navbar = ({ navbarVisible = true }) => {
               </svg>
             ) : (
               <svg
-                width="10"
-                height="10"
+                width="15"
+                height="15"
                 viewBox="0 0 24 24"
                 fill="none"
                 className="sm:w-[24px] sm:h-[24px]"
