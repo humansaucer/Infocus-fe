@@ -76,45 +76,44 @@ const MembersSection = () => {
 
   // Desktop position functions
   const getCreativeDesktopPositions = (titleCount) => {
-    const standardSize = "w-20 h-20 lg:w-30 lg:h-30 xl:w-40 xl:h-40";
-    const positions = [
-      { top: "17%", left: "10%", size: standardSize },
-      { top: "18%", left: "60%", size: standardSize },
-      { top: "40%", left: "35%", size: standardSize },
-      { top: "61%", left: "7%", size: standardSize },
-      { top: "61%", left: "64%", size: standardSize },
-    ];
-    return positions.slice(0, titleCount);
-  };
+  const standardSize = "w-20 h-20 lg:w-30 lg:h-30 xl:w-40 xl:h-40";
+  const positions = [
+    { top: "17%", left: "10%", size: standardSize, transform: "rotate(-8deg)" },
+    { top: "18%", left: "60%", size: standardSize, transform: "rotate(15deg)" },
+    { top: "40%", left: "35%", size: standardSize, transform: "rotate(-12deg)" },
+    { top: "61%", left: "7%", size: standardSize, transform: "rotate(18deg)" },
+    { top: "61%", left: "64%", size: standardSize, transform: "rotate(-6deg)" },
+  ];
+  return positions.slice(0, titleCount);
+};
 
-  const getSocialDesktopPositions = (titleCount) => {
-    const standardSize = "w-20 h-20 lg:w-30 lg:h-30 xl:w-40 xl:h-40";
-    const positions = [
-      { top: "12%", left: "9%", size: standardSize },
-      { top: "27%", left: "34%", size: standardSize },
-      { top: "16%", left: "48%", size: standardSize },
-      { top: "14%", left: "70%", size: standardSize },
-      { top: "35%", left: "20%", size: standardSize },
-      { top: "37%", left: "60%", size: standardSize },
-      { top: "58%", left: "5%", size: standardSize },
-      { top: "58%", left: "39%", size: standardSize },
-      { top: "58%", left: "75%", size: standardSize },
-      { top: "66%", left: "25%", size: standardSize },
-      { top: "67%", left: "53%", size: standardSize },
-    ];
-    return positions.slice(0, titleCount);
-  };
+const getSocialDesktopPositions = (titleCount) => {
+  const standardSize = "w-20 h-20 lg:w-30 lg:h-30 xl:w-40 xl:h-40";
+  const positions = [
+    { top: "12%", left: "9%", size: standardSize, transform: "rotate(22deg)" },
+    { top: "27%", left: "34%", size: standardSize, transform: "rotate(-15deg)" },
+    { top: "16%", left: "48%", size: standardSize, transform: "rotate(8deg)" },
+    { top: "14%", left: "70%", size: standardSize, transform: "rotate(-18deg)" },
+    { top: "35%", left: "20%", size: standardSize, transform: "rotate(25deg)" },
+    { top: "37%", left: "60%", size: standardSize, transform: "rotate(-10deg)" },
+    { top: "58%", left: "5%", size: standardSize, transform: "rotate(14deg)" },
+    { top: "58%", left: "39%", size: standardSize, transform: "rotate(-20deg)" },
+    { top: "58%", left: "75%", size: standardSize, transform: "rotate(16deg)" },
+    { top: "66%", left: "25%", size: standardSize, transform: "rotate(-7deg)" },
+    { top: "67%", left: "53%", size: standardSize, transform: "rotate(19deg)" },
+  ];
+  return positions.slice(0, titleCount);
+};
 
-  const getProductionDesktopPositions = (titleCount) => {
-    const standardSize = "w-20 h-20 lg:w-30 lg:h-30 xl:w-40 xl:h-40";
-    const positions = [
-      { top: "20%", left: "20%", size: standardSize },
-      { top: "30%", left: "38%", size: standardSize },
-      { top: "29%", left: "54%", size: standardSize },
-    ];
-    return positions.slice(0, titleCount);
-  };
-
+const getProductionDesktopPositions = (titleCount) => {
+  const standardSize = "w-20 h-20 lg:w-30 lg:h-30 xl:w-40 xl:h-40";
+  const positions = [
+    { top: "20%", left: "20%", size: standardSize, transform: "rotate(-14deg)" },
+    { top: "30%", left: "38%", size: standardSize, transform: "rotate(21deg)" },
+    { top: "29%", left: "54%", size: standardSize, transform: "rotate(-9deg)" },
+  ];
+  return positions.slice(0, titleCount);
+};
   // Mobile position functions based on design images
   const getCreativeMobilePositions = (titleCount) => {
     const positions = [
