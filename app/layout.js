@@ -1,10 +1,12 @@
 import "./globals.css";
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "../components/Navbar";
 import ParallaxWrapper from "../components/ParallaxWrapper";
 import { AuthProvider } from "@/context/AuthContext";
 import { Almarai } from "next/font/google";
 import { NavbarProvider, useNavbar } from "@/context/NavBarContext";
 import NavbarWrapper from "@/components/navbarWrapper";
+import { ToastContainer } from 'react-toastify';
 const almarai = Almarai({
   subsets: ["arabic"],
   weight: ["300", "400", "700", "800"],
@@ -42,6 +44,22 @@ export default function RootLayout({ children }) {
           <NavbarProvider>
             <NavbarWrapper />
             {children}
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              toastStyle={{
+                fontSize: '14px',
+                fontFamily: 'inherit'
+              }}
+            />
           </NavbarProvider>
         </AuthProvider>
       </body>

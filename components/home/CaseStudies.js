@@ -68,7 +68,7 @@ const CaseStudies = () => {
                       alt={item.title}
                       className={`w-full transition-all duration-300 group-hover:blur-sm ${
                         index === 1
-                          ? "h-[252px] md:h-[520px] lg:h-[514px] object-cover relative top-[-14px]"
+                          ? "h-[252px] md:h-[520px] lg:h-[494px] object-cover relative top-[-14px]"
                           : "h-[242px] md:h-[487px] lg:h-[480px] object-cover"
                       }`}
                     />
@@ -83,7 +83,7 @@ const CaseStudies = () => {
                   </div>
                   <div
                     className={`mt-2 px-1   ${
-                      index === 1 ? "relative top-[-34px]" : ""
+                      index === 1 ? "relative top-[-14px]" : ""
                     }`}
                   >
                     <h3 className="text-[44px] font-semibold text-black">

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import ApplyingModal from "./ApplyingModal";
-import Notification from "../Notification";
+
 
 const vacancies = [
   {
@@ -30,7 +30,6 @@ const vacancies = [
 const VacanciesSection = () => {
   const [openId, setOpenId] = useState(null);
   const [selectedJob, setSelectedJob] = useState(null); // store the clicked job
-  const [showToast, setShowToast] = useState(false);
   const [isModalClosing, setIsModalClosing] = useState(false);
   const [isModalOpening, setIsModalOpening] = useState(false);
 
@@ -39,8 +38,7 @@ const VacanciesSection = () => {
   };
 
   const handleApplySuccess = () => {
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 4000);
+    // Toast notifications are now handled in the ApplyingModal component
   };
 
   const handleModalClose = () => {
@@ -79,13 +77,6 @@ const VacanciesSection = () => {
             onApplySuccess={handleApplySuccess}
           />
         </div>
-      )}
-      {showToast && (
-        <Notification
-          message="Thank you for submitting your CV! We’ll contact you if your profile fits our needs."
-          type="success"
-          onClose={() => setShowToast(false)}
-        />
       )}
 
       <div className="container mx-auto px-6">
