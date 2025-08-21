@@ -159,7 +159,7 @@ export default function TabletSection() {
         >
           <div className="flex justify-center items-center mobile-text w-full h-full">
             <div className="transform rotate-90 origin-center">
-              <h1 className="text-[60vw]   xs:text-[75vw] sm:text-[80vw] font-bold text-black whitespace-nowrap leading-none pr-10   py-[20vh]">
+              <h1 className="text-[60vw]   xs:text-[75vw] sm:text-[80vw] font-bold text-black whitespace-nowrap leading-none pr-50   py-[20vh]">
                 Infocus Media®    
               </h1>
             </div>
@@ -177,13 +177,13 @@ export default function TabletSection() {
           playsInline
           preload="auto"
           style={{
-            width: "100vw",
+            width: "150vw",
             height: "100vh",
-            minWidth: "100vw",
+            minWidth: "150vw",
             minHeight: "100vh",
             maxWidth: "none",
             maxHeight: "none",
-            objectFit: "cover",
+            objectFit: "fill",
           }}
         />
 
