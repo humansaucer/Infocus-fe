@@ -159,8 +159,8 @@ export default function TabletSection() {
         >
           <div className="flex justify-center items-center mobile-text w-full h-full">
             <div className="transform rotate-90 origin-center">
-              <h1 className="text-[70vw] xs:text-[75vw] sm:text-[80vw] font-bold text-black whitespace-nowrap leading-none py-[20vh]">
-                Infocus Media <span className="text-[35vw] xs:text-[37vw] sm:text-[40vw] align-super leading-none">®</span>
+              <h1 className="text-[60vw]   xs:text-[75vw] sm:text-[80vw] font-bold text-black whitespace-nowrap leading-none    py-[20vh]">
+                Infocus Media®    <span className="text-[35vw] xs:text-[37vw] sm:text-[40vw] align-super leading-none">®</span>
               </h1>
             </div>
           </div>
