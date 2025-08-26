@@ -24,7 +24,7 @@ export default function LogoSwitcher() {
 
     return () => markers.forEach((marker) => observer.unobserve(marker));
   }, []);
-
+  
   return (
     <img
       src={isDarkBg ? "/logo.png" : "/logo-black.png"}
